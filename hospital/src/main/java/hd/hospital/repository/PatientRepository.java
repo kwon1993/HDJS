@@ -15,4 +15,7 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
             "set p.patientName = patientName, p.genderCode = genderCode, p.birth = birth, p.phoneNumber = phoneNumber " +
             "where p.id = id", nativeQuery = true)
     void update(@Param("patient") Patient patient);
+
+    @Query(value = "select p.registration_number from Patient p order by p.id desc limit 1",nativeQuery = true)
+    String latestRegistrationNumber();
 }

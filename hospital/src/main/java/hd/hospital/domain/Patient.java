@@ -49,6 +49,10 @@ public class Patient {
         this.patientName = patientName;
     }
 
+    public void setRegistrationNumber(String registrationNumber) {
+        this.registrationNumber = registrationNumber;
+    }
+
     public void setGenderCode(String genderCode) {
         this.genderCode = genderCode;
     }
