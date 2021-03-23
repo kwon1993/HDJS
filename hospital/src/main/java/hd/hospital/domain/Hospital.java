@@ -24,10 +24,10 @@ public class Hospital {
     @Column(length = 10)
     private String hospitalHeadName;
 
-    @OneToMany(mappedBy = "hospitalId")
+    @OneToMany(mappedBy = "hospital")
     private List<Patient> patientList;
 
-    @OneToMany(mappedBy = "hospitalId")
+    @OneToMany(mappedBy = "hospital")
     private List<Visit> visitList;
 
     @Builder

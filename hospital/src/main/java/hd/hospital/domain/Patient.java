@@ -18,8 +18,8 @@ public class Patient {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "hospitalId")
-    private Hospital hospitalId;
+    @JoinColumn(name = "hospital_id")
+    private Hospital hospital;
 
     @Column(length = 45)
     private String patientName;
@@ -32,12 +32,12 @@ public class Patient {
     @Column(length = 20)
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "patientId")
+    @OneToMany(mappedBy = "patient")
     private List<Visit> visitList;
 
     @Builder
-    public Patient(Hospital hospitalId, String patientName, String registrationNumber, String genderCode, String birth, String phoneNumber) {
-        this.hospitalId = hospitalId;
+    public Patient(Hospital hospital, String patientName, String registrationNumber, String genderCode, String birth, String phoneNumber) {
+        this.hospital = hospital;
         this.patientName = patientName;
         this.registrationNumber = registrationNumber;
         this.genderCode = genderCode;

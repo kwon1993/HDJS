@@ -18,38 +18,38 @@ public class Visit {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "hospitalId")
-    private Hospital hospitalId;
+    @JoinColumn(name = "hospital_id")
+    private Hospital hospital;
 
     @ManyToOne
-    @JoinColumn(name = "patientId")
-    private Patient patientId;
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
 
     private Date receptionDate;
     @Column(length = 10)
-    private String statueCode;
+    private String statusCode;
 
     @Builder
-    public Visit(Hospital hospitalId, Patient patientId, Date receptionDate, String statueCode) {
-        this.hospitalId = hospitalId;
-        this.patientId = patientId;
+    public Visit(Hospital hospital, Patient patient, Date receptionDate, String statusCode) {
+        this.hospital = hospital;
+        this.patient = patient;
         this.receptionDate = receptionDate;
-        this.statueCode = statueCode;
+        this.statusCode = statusCode;
     }
 
-    public void setHospitalId(Hospital hospitalId) {
-        this.hospitalId = hospitalId;
+    public void setHospitalId(Hospital hospital) {
+        this.hospital = hospital;
     }
 
-    public void setPatientId(Patient patientId) {
-        this.patientId = patientId;
+    public void setPatientId(Patient patient) {
+        this.patient = patient;
     }
 
     public void setReceptionDate(Date receptionDate) {
         this.receptionDate = receptionDate;
     }
 
-    public void setStatueCode(String statueCode) {
-        this.statueCode = statueCode;
+    public void setStatusCode(String statusCode) {
+        this.statusCode = statusCode;
     }
 }
