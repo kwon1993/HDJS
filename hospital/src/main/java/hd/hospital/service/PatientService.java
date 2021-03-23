@@ -52,7 +52,7 @@ public class PatientService {
         String latestRegistrationNumber = patientRepository.latestRegistrationNumber(); //최근에 들어간 등록번호
         if(latestRegistrationNumber == null || latestRegistrationNumber.isEmpty()){ //sequence 값 설정
             sequence = 1;
-        } else if (latestRegistrationNumber.substring(0, 4).equals(year)){
+        } else if (!latestRegistrationNumber.substring(0, 4).equals(year)){
             sequence = 1;
         } else {
             sequence = Integer.parseInt(latestRegistrationNumber.substring(4)) + 1;
