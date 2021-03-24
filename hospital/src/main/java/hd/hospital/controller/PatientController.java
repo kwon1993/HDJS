@@ -3,6 +3,8 @@ package hd.hospital.controller;
 import hd.hospital.domain.Patient;
 import hd.hospital.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,22 +27,27 @@ public class PatientController {
     }
 
     @PostMapping("/patient/list")
-    public List<Patient> findAll(){
+    public List<Patient> findAll() {
         return patientService.findAll();
     }
 
-    @PostMapping("/patient/search")
+    @PostMapping("/patient/findById")
     public Optional<Patient> findById(Long id) {
         return patientService.findById(id);
     }
 
+    @PostMapping("/patient/search")
+    public Page<Patient> search(Patient patient, Pageable pageable) {
+        return patientService.search(patient, pageable);
+    }
+
     @PostMapping("/patient/update")
-    public void update(Patient patient){
+    public void update(Patient patient) {
         patientService.update(patient);
     }
 
     @PostMapping("/patient/delete")
-    public void deleteById(Long id){
+    public void deleteById(Long id) {
         patientService.deleteById(id);
     }
 }
