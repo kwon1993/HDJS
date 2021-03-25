@@ -6,13 +6,13 @@ import hd.hospital.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Calendar;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional
@@ -40,7 +40,8 @@ public class PatientService {
         return patientRepository.findById(id);
     }
 
-    public Page<Patient> search(Patient patient, Pageable pageable) {
+    public Page<Patient> search(Patient patient, int pageSize, int pageNo) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
         return patientRepository
                 .findAll(PatientPredicate.search(patient.getPatientName(), patient.getRegistrationNumber(), patient.getBirth()), pageable);
     }
@@ -69,4 +70,6 @@ public class PatientService {
         String result = year + String.format("%05d", sequence);
         return result;
     }
+
+
 }

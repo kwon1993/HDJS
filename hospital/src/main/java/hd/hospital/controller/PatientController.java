@@ -37,8 +37,8 @@ public class PatientController {
     }
 
     @PostMapping("/patient/search")
-    public Page<Patient> search(Patient patient, Pageable pageable) {
-        return patientService.search(patient, pageable);
+    public Page<Patient> search(Patient patient, int pageSize, int pageNo) {
+        return patientService.search(patient, pageSize, pageNo);
     }
 
     @PostMapping("/patient/update")
